@@ -17,6 +17,9 @@ gem 'haml-rails'
 gem 'pg'
 gem 'sendgrid'
 gem 'simple_form'
+gem 'rapidfire'
+gem 'rails_admin'
+gem 'figaro'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

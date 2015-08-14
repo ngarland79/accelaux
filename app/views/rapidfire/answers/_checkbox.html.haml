@@ -1,0 +1,23 @@
+.field-group.checkbox
+  = render partial: "rapidfire/answers/errors", locals: {answer: answer}
+  %h3
+    = f.label :answer_text, answer.question.question_text
+  = f.fields_for :answer_text do |af|
+    - answer.question.options.each do |option|
+      = af.label option do
+        = af.check_box nil, { id: nil, checked: checkbox_checked?(answer, option) }, option
+        %b
+          = option
+        %br
+        - if option == "Early Concept Validation"
+          = "Providing feedback remotely or in person on design concepts online or in early sketch phases. (Example: Video conference where we show you early stage design ideas and you tell us if they are good or not. :) )"
+        - if option == "A Day in the Life"
+          = "Allow UX researchers to shadow you for any length of time to understand your day-to-day responsibilities and systems and better understand your overall needs (Example: Schedule a site visit well ahead of time and talk about areas of interest and pain points that you want to surface to help us make a better point of sale expereicne for your recreation center.)"
+        - if option == "Discovery Interview"
+          = "Phone or in-person interview to get a high-level understanding of your most common workflows and processes (Example: Video conference of us observing how you process a permit or schedule inspections)"
+        - if option == "Usability Testing"
+          = "Providing remote feedback on product designs in medium- to high-fidelity mockups. (Example: Video conference observing you trying to use a new version of your Accela product)"
+        - if option == "Photo Journaling"
+          = "Documenting an experience that happens over time (Example: Regular use of local parks and recreations centers)"
+        - if option == "Focus Groups"
+          = "6-10 people in a room discussion topics, providing feedback on ideas or concepts (Example: We meet together in a conference room and discuss your experience of Payment processing and what your most urgent needs are.)"
