@@ -20,6 +20,7 @@ gem 'simple_form'
 gem 'rapidfire'
 gem 'rails_admin'
 gem 'figaro'
+gem 'punching_bag'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

@@ -1,6 +1,6 @@
 - if @question_group.id == 1
   .header
-    %img{src: asset_path("accela-logo.png")}
+    %img.accela-logo{src: asset_path("accela-logo.png")}
     %img.apd-logo{src: asset_path("apd.png")}
   .content
     %h1
@@ -9,7 +9,7 @@
       &#x25BC;
     %h2
       To help build lasting relationships between citizens and their government.
-    %p
+    %p.intro-paragraph
       Your input, feedback, ideas, and critique are what help us do that. Please complete the following survey if you would like to participate in Accela design research.
     = form_for([@question_group, @answer_group_builder]) do |f|
       - @answer_group_builder.answers.each do |answer|
