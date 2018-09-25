@@ -30,6 +30,20 @@
   $(document).ready( function() {
     var Airtable = require('airtable');
     var base = new Airtable({ apiKey: 'keyFnc2NJ89ArQLbH' }).base('appT9NGiqBimMGixI');
+    var selected_other = $("input[name='answer_group[7][answer_text][]'][value='Other (please specify)']");
+
+    selected_other.change(function() {
+
+       if ( ! this.checked) {
+        $("#selected_solutions_other").remove();
+       }
+
+       else {
+        selected_other.parent().after("<textarea id='selected_solutions_other'></textarea>")
+       }
+
+    });
+    
     $('input[type="submit"]').click(function(event) {
       event.stopPropagation();
       event.preventDefault();
@@ -46,19 +60,7 @@
         selected_solutions_values.push($(this).val());
       });
 
-      var selected_other = $("input[name='answer_group[7][answer_text][]'][value='Other (please specify)']");
-
-      selected_other.change(function() {
-
-         if ( ! this.checked) {
-          $("#selected_solutions_other").remove();
-         }
-
-         else {
-          selected_other.parent().after("<textarea id='selected_solutions_other'></textarea>")
-         }
-
-      });
+      
       var solutions_open = $("#selected_solutions_other").val();
 
       var selected_methods = $("input[name='answer_group[8][answer_text][]']:checked");
