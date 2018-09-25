@@ -25,3 +25,60 @@
       = f.fields_for("#{answer.question.id}", answer) do |answer_form|
         = render_answer_form_helper(answer, answer_form)
     = f.submit "Save"
+
+:javascript
+  $(document).ready( function() {
+    var Airtable = require('airtable');
+    var base = new Airtable({ apiKey: 'keyFnc2NJ89ArQLbH' }).base('appT9NGiqBimMGixI');
+    $('input[type="submit"]').click(function(event) {
+      event.stopPropagation();
+      event.preventDefault();
+      var name = $('#answer_group_1_answer_text').val();
+      var agency = $('#answer_group_2_answer_text').val();
+      var department = $('#answer_group_3_answer_text').val();
+      var email = $('#answer_group_4_answer_text').val();
+      var phone = $('#answer_group_5_answer_text').val();
+      var job_role = $('#answer_group_6_answer_text').val();
+
+      var selected_solutions = $("input[name='answer_group[7][answer_text][]']:checked");
+      var selected_solutions_values = new Array();
+      $.each(selected_solutions, function() {
+        selected_solutions_values.push($(this).val());
+      });
+
+      var selected_other = $("input[name='answer_group[7][answer_text][]'][7]:checked");
+      selected_other.parent().next("<textarea id="selected_solutions_other"></textarea>");
+      var solutions_open = $("#selected_solutions_other").val();
+
+      var selected_methods = $("input[name='answer_group[8][answer_text][]']:checked");
+      var selected_methods_values = new Array();
+      $.each(selected_methods, function() {
+        selected_methods_values.push($(this).val());
+      });
+
+      if (name != "" && agency != "" && department != "" && email != "" && job_role != "" && selected_methods_values.length > 0) {
+        
+        base('form').create({
+            "Name": name,
+            "Agency": agency,
+            "Department": department,
+            "Email": email,
+            "Phone": phone,
+            "Job_Role": job_role,
+            "Solutions": selected_solutions_values,
+            "Solutions_Open": solutions_open,
+            "Research_Types": selected_methods_values
+            
+        }, function(err, record) {
+            if (err) { console.log(err); return; }
+            else {
+              $("#new_answer_group").submit();
+            }
+        });
+      }
+      else {
+        return false;
+      }
+      
+    });
+  });
