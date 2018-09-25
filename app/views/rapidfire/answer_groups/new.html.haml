@@ -4,13 +4,13 @@
     %img.apd-logo{src: asset_path("apd.png")}
   .content
     %h1
-      = @question_group.name
-    .down-triangle
-      &#x25BC;
+      Give us your two cents
+    / .down-triangle
+    /   &#x25BC;
     %h2
-      To help build lasting relationships between citizens and their government.
+      YOUR INPUT, FEEDBACK, AND IDEAS HELP US BUILD BETTER PRODUCTS FOR YOU AND YOUR CITIZENS.
     %p.intro-paragraph
-      Your input, feedback, ideas, and critique are what help us do that. Please complete the following survey if you would like to participate in Accela design research.
+      Please complete the following survey if you would like to participate in Accela design research.
     = form_for([@question_group, @answer_group_builder]) do |f|
       - @answer_group_builder.answers.each do |answer|
         = f.fields_for("#{answer.question.id}", answer) do |answer_form|
@@ -46,8 +46,19 @@
         selected_solutions_values.push($(this).val());
       });
 
-      var selected_other = $("input[name='answer_group[7][answer_text][]'][7]:checked");
-      selected_other.parent().next("<textarea id="selected_solutions_other"></textarea>");
+      var selected_other = $("input[name='answer_group[7][answer_text][]'][value='Other (please specify)']");
+
+      $('#yourcheckbox').change(function() {
+
+         if ( ! this.checked) {
+          $("#selected_solutions_other").remove();
+         }
+
+         else {
+          selected_other.parent().after("<textarea id='selected_solutions_other'></textarea>")
+         }
+
+      });
       var solutions_open = $("#selected_solutions_other").val();
 
       var selected_methods = $("input[name='answer_group[8][answer_text][]']:checked");
