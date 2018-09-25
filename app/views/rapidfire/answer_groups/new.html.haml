@@ -48,7 +48,7 @@
 
       var selected_other = $("input[name='answer_group[7][answer_text][]'][value='Other (please specify)']");
 
-      $('#yourcheckbox').change(function() {
+      selected_other.change(function() {
 
          if ( ! this.checked) {
           $("#selected_solutions_other").remove();
