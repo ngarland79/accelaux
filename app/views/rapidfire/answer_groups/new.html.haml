@@ -1,6 +1,6 @@
 - if @question_group.id == 1
   .header
-    %img.accela-logo{src: asset_path("accela-logo.png")}
+    / %img.accela-logo{src: asset_path("accela-logo.png")}
     %img.apd-logo{src: asset_path("apd.png")}
   .content
     %h1
@@ -53,6 +53,8 @@
       var email = $('#answer_group_4_answer_text').val();
       var phone = $('#answer_group_5_answer_text').val();
       var job_role = $('#answer_group_6_answer_text').val();
+      var admin_user = $('[name="answer_group[9][answer_text]"]:checked').val();
+      var cannabis = $('[name="answer_group[10][answer_text]"]:checked').val();
 
       var selected_solutions = $("input[name='answer_group[7][answer_text][]']:checked");
       var selected_solutions_values = new Array();
@@ -80,7 +82,9 @@
             "Job_Role": job_role,
             "Solutions": selected_solutions_values,
             "Solutions_Open": solutions_open,
-            "Research_Types": selected_methods_values
+            "Research_Types": selected_methods_values,
+            "Admin_User": admin_user,
+            "CRCA": cannabis
             
         }, function(err, record) {
             if (err) { console.log(err); return; }

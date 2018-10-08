@@ -11,7 +11,7 @@ body {
 }
 .header {
   height: 168px;
-  background-color: #00A3DB;
+  background-color: #152b50;
   .apd-logo {
     width: 225px;
     position: absolute;
@@ -52,6 +52,19 @@ body {
       color: #000;
       padding-left: 34px !important;
       margin-left: 0 !important;
+    }
+  }
+  .radio-group {
+    margin-top: 40px;
+    h3 {
+      label {
+        padding-left: 0 !important;
+      }
+    }
+    input {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
     }
   }
   p {
@@ -140,6 +153,7 @@ input[type="submit"], button {
   text-transform: uppercase;
   cursor: pointer;
   -webkit-appearance: none;
+  margin-top: 50px;
 }
 
 @media (max-width: 515px) {
