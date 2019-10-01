@@ -30,7 +30,7 @@
   $(document).ready( function() {
   $($(".field-group").get(7)).insertBefore(".field-group:nth-of-type(7)");
   $($(".field-group").get(8)).insertBefore(".field-group:nth-of-type(8)");
-  
+
     var Airtable = require('airtable');
     var base = new Airtable({ apiKey: 'keyFnc2NJ89ArQLbH' }).base('appT9NGiqBimMGixI');
     var selected_other = $("input[name='answer_group[7][answer_text][]'][value='Other (please specify)']");
@@ -57,16 +57,28 @@
       var phone = $('#answer_group_5_answer_text').val();
       var job_role = $('#answer_group_6_answer_text').val();
       var admin_user = $('[name="answer_group[9][answer_text]"]:checked').val();
-      var cannabis = $('[name="answer_group[10][answer_text]"]:checked').val();
+      var citizenaccess = $('[name="answer_group[11][answer_text]"]:checked').val();
 
-      var selected_solutions = $("input[name='answer_group[7][answer_text][]']:checked");
+      var selected_solutions = $("input[name='answer_group[12][answer_text][]']:checked");
       var selected_solutions_values = new Array();
       $.each(selected_solutions, function() {
         selected_solutions_values.push($(this).val());
       });
 
+      var selected_products = $("input[name='answer_group[7][answer_text][]']:checked");
+      var selected_products_values = new Array();
+      $.each(selected_products, function() {
+        selected_products_values.push($(this).val());
+      });
+
+      var selected_regularly = $("input[name='answer_group[13][answer_text][]']:checked");
+      var selected_regularly_values = new Array();
+      $.each(selected_regularly, function() {
+        selected_regularly_values.push($(this).val());
+      });
+
       
-      var solutions_open = $("#selected_solutions_other").val();
+      / var solutions_open = $("#selected_solutions_other").val();
 
       var selected_methods = $("input[name='answer_group[8][answer_text][]']:checked");
       var selected_methods_values = new Array();
@@ -83,11 +95,12 @@
             "Email": email,
             "Phone": phone,
             "Job_Role": job_role,
-            "Solutions": selected_solutions_values,
-            "Solutions_Open": solutions_open,
+            "Solutions_2019": selected_solutions_values,
+            "Products_2019": selected_products_values,
             "Research_Types": selected_methods_values,
             "Admin_User": admin_user,
-            "CRCA": cannabis
+            "Citizen_Access": citizenaccess,
+            "Regularly_Use": selected_regularly
             
         }, function(err, record) {
             if (err) { console.log(err); return; }
