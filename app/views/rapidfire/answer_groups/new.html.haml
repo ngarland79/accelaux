@@ -28,6 +28,9 @@
 
 :javascript
   $(document).ready( function() {
+  $($(".field-group").get(7)).insertBefore(".field-group:nth-of-type(7)");
+  $($(".field-group").get(8)).insertBefore(".field-group:nth-of-type(8)");
+  
     var Airtable = require('airtable');
     var base = new Airtable({ apiKey: 'keyFnc2NJ89ArQLbH' }).base('appT9NGiqBimMGixI');
     var selected_other = $("input[name='answer_group[7][answer_text][]'][value='Other (please specify)']");
