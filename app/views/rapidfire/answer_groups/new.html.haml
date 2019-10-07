@@ -33,19 +33,6 @@
 
     var Airtable = require('airtable');
     var base = new Airtable({ apiKey: 'keyFnc2NJ89ArQLbH' }).base('appT9NGiqBimMGixI');
-    var selected_other = $("input[name='answer_group[7][answer_text][]'][value='Other (please specify)']");
-
-    selected_other.change(function() {
-
-       if ( ! this.checked) {
-        $("#selected_solutions_other").remove();
-       }
-
-       else {
-        selected_other.parent().after("<textarea id='selected_solutions_other'></textarea>")
-       }
-
-    });
     
     $('input[type="submit"]').click(function(event) {
       event.stopPropagation();
@@ -86,6 +73,20 @@
       if (name != "" && agency != "" && department != "" && email != "" && job_role != "" && selected_methods_values.length > 0) {
 
       setTimeout(function(){
+
+      console.log(name);
+      console.log(agency);
+      console.log(department);
+      console.log(email);
+      console.log(phone);
+      console.log(job_role);
+      console.log(selected_solutions_values);
+      console.log(selected_products_values);
+      console.log(selected_methods_values);
+      console.log(selected_products_values);
+      console.log(admin_user);
+      console.log(citizenaccess);
+      console.log(selected_regularly_values);
         
             base('form').create({
                 "Name": name,
