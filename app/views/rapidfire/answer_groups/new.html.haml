@@ -84,32 +84,33 @@
       });
 
       if (name != "" && agency != "" && department != "" && email != "" && job_role != "" && selected_methods_values.length > 0) {
+
+      setTimeout(function(){
         
-        base('form').create({
-            "Name": name,
-            "Agency": agency,
-            "Department": department,
-            "Email": email,
-            "Phone": phone,
-            "Job_Role": job_role,
-            "Solutions_2019": selected_solutions_values,
-            "Products_2019": selected_products_values,
-            "Research_Types": selected_methods_values,
-            "Admin_User": admin_user,
-            "Citizen_Access": citizenaccess,
-            "Regularly_Use": selected_regularly_values
-            
-        }, function(err, record) {
-            if (err) { console.log(err); return; }
-            else {
-              $("#new_answer_group").submit();
-              console.log(record);
-            }
-        });
+            base('form').create({
+                "Name": name,
+                "Agency": agency,
+                "Department": department,
+                "Email": email,
+                "Phone": phone,
+                "Job_Role": job_role,
+                "Solutions_2019": selected_solutions_values,
+                "Products_2019": selected_products_values,
+                "Research_Types": selected_methods_values,
+                "Admin_User": admin_user,
+                "Citizen_Access": citizenaccess,
+                "Regularly_Use": selected_regularly_values
+                
+            }, function(err, record) {
+                if (err) { console.log(err); return; }
+                else {
+                  $("#new_answer_group").submit();
+                }
+            });
+        }, 1500);
       }
       else {
         $("#new_answer_group").submit();
-        console.log('else');
       }
       
     });
