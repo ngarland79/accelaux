@@ -103,11 +103,13 @@
             if (err) { console.log(err); return; }
             else {
               $("#new_answer_group").submit();
+              console.log(record);
             }
         });
       }
       else {
         $("#new_answer_group").submit();
+        console.log('else');
       }
       
     });
