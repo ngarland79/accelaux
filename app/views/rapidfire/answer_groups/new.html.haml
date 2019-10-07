@@ -29,7 +29,7 @@
 :javascript
   $(document).ready( function() {
   
-    
+    $($(".field-group").get(7)).insertAfter($(".field-group").get(3));  
 
     var Airtable = require('airtable');
     var base = new Airtable({ apiKey: 'keyFnc2NJ89ArQLbH' }).base('appT9NGiqBimMGixI');
