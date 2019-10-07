@@ -29,7 +29,7 @@
 :javascript
   $(document).ready( function() {
   
-    $($(".field-group").get(6)).insertAfter($(".radio-group").get(1));
+    
 
     var Airtable = require('airtable');
     var base = new Airtable({ apiKey: 'keyFnc2NJ89ArQLbH' }).base('appT9NGiqBimMGixI');
@@ -73,20 +73,6 @@
       if (name != "" && agency != "" && department != "" && email != "" && job_role != "" && selected_methods_values.length > 0) {
 
       setTimeout(function(){
-
-      console.log(name);
-      console.log(agency);
-      console.log(department);
-      console.log(email);
-      console.log(phone);
-      console.log(job_role);
-      console.log(selected_solutions_values);
-      console.log(selected_products_values);
-      console.log(selected_methods_values);
-      console.log(selected_products_values);
-      console.log(admin_user);
-      console.log(citizenaccess);
-      console.log(selected_regularly_values);
         
             base('form').create({
                 "Name": name,
@@ -108,7 +94,7 @@
                   $("#new_answer_group").submit();
                 }
             });
-        }, 1500);
+        }, 500);
       }
       else {
         $("#new_answer_group").submit();
